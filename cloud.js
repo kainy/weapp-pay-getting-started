@@ -26,8 +26,8 @@ AV.Cloud.define('order', (request, response) => {
   order.tradeId = uuid().replace(/-/g, '');
   order.status = 'INIT';
   order.user = request.currentUser;
-  order.productDescription = '请郭老师喝杯茶';
-  order.amount = 1;
+  order.productDescription = '请郭老师喝碗茶';
+  order.amount = 100;
   order.ip = request.meta.remoteAddress;
   if (!(order.ip && /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(order.ip))) {
     order.ip = '127.0.0.1';
