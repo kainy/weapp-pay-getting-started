@@ -57,25 +57,27 @@ class Order extends AV.Object {
   }
 
   sendNotice() {
+    const d = new Date(this.get('paidAt'))
+    const arr = d.toString().split(' ')
     const data = {
       touser: this.user.get('authData').lc_weapp.openid,
-      template_id: 'JANsgn2SkVV5HmQdMv5k1oWYnIeTRDl-OmkJocsZwFU',
+      template_id: '5SOa_RWr1rOjAEcmVVXuVyZ2XaLwruaTL5MKddwDkTI',
       form_id: this.prepayId,
       data: {
         "keyword1": {
-          "value": `${this.amount / 100} 元`,
+          "value": '小程序打赏',
         },
         "keyword2": {
-          "value": this.get('paidAt'),
+          "value": `${this.amount / 100} 元`,
         },
         "keyword3": {
-          "value": '小程序支付测试',
+          "value": `${arr[3]}-${d.getMonth()+1}-${arr[2]} ${arr[4]}`
         },
         "keyword4": {
           "value": this.tradeId,
         }
       },
-      emphasis_keyword: 'keyword3.DATA',
+      emphasis_keyword: 'keyword1.DATA',
     };
     console.log('send notice: ', data);
     return getAccessToken().then(accessToken =>

@@ -19,7 +19,7 @@ const refreshToken = () => {
   }).then(({data : { access_token, expires_in, errcode, errmsg }}) => {
     if (errcode) {
       console.error(errcode, errmsg);
-      throw new Eror(errmsg);
+      throw new Error(errmsg);
     }
     accessToken = {
       value: access_token,
