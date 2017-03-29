@@ -66,6 +66,7 @@ class Order extends AV.Object {
       data: {
         "keyword1": {
           "value": '小程序打赏',
+          "color": "#1aad19",
         },
         "keyword2": {
           "value": `${this.amount / 100} 元`,
@@ -78,6 +79,7 @@ class Order extends AV.Object {
         }
       },
       emphasis_keyword: 'keyword1.DATA',
+      page: "pages/my-pay/pay",
     };
     console.log('send notice: ', data);
     return getAccessToken().then(accessToken =>
