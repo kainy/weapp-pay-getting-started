@@ -25,12 +25,12 @@
     "leanengine": "git+https://github.com/leancloud/leanengine-node-sdk.git#v2",
     "request": "^2.79.0",
     "uuid": "^3.0.1",
-    "weixin-pay": "^1.1.7"
+    "weixin-pay": "git+https://github.com/FJUT/weixin-pay.git#master"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
   },
   "engines": {
-    "node": "6.x"
+    "node": "7.0"
   }
 }
