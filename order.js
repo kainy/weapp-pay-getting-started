@@ -32,6 +32,9 @@ class Order extends AV.Object {
   get prepayId() { return this.get('prepayId'); }
   set prepayId(value) { this.set('prepayId', value); }
 
+  get link() { return this.get('link'); }
+  set link(value) { this.set('link', value); }
+
   place() {
     return new Promise((resolve, reject) => {
       // 参数文档： https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=9_1

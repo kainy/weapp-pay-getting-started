@@ -28,7 +28,8 @@ AV.Cloud.define('order', (request, response) => {
   order.status = 'INIT';
   order.user = request.currentUser;
   order.productDescription = '请郭老师喝碗茶';
-  order.amount = 100;
+  order.amount = request.params.amount || 100;
+  order.link = request.params.link || {};
   order.ip = request.meta.remoteAddress;
   if (!(order.ip && /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(order.ip))) {
     order.ip = '127.0.0.1';
