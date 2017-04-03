@@ -64,7 +64,7 @@ class Order extends AV.Object {
     const arr = d.toString().split(' ')
     const data = {
       touser: this.user.get('authData').lc_weapp.openid,
-      template_id: '5SOa_RWr1rOjAEcmVVXuVyZ2XaLwruaTL5MKddwDkTI',
+      template_id: '5SOa_RWr1rOjAEcmVVXuVy3qFRBqeXXLO0TH3bq7DEM',
       form_id: this.prepayId,
       data: {
         "keyword1": {
@@ -79,6 +79,12 @@ class Order extends AV.Object {
         },
         "keyword4": {
           "value": this.tradeId,
+        },
+        "keyword5": {
+          "value": this.productDescription,
+        },
+        "keyword6": {
+          "value": '感谢惠顾，祝使用愉快 ^-^',
         }
       },
       emphasis_keyword: 'keyword1.DATA',
