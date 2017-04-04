@@ -6,7 +6,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "lint": "standard"
   },
   "keywords": [
     "LeanCloud",
@@ -28,7 +29,8 @@
     "weixin-pay": "git+https://github.com/FJUT/weixin-pay.git#master"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "standard": "^9.0.2"
   },
   "engines": {
     "node": "7.0"
