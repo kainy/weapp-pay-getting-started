@@ -20,6 +20,7 @@ AV.Cloud.define('order', (request, response) => {
     return response.error(new Error('用户未登录'));
   }
   const authData = user.get('authData');
+  const username = user.get('username');
   if (!authData || !authData.lc_weapp) {
     return response.error(new Error('当前用户不是小程序用户'));
   }
@@ -29,6 +30,10 @@ AV.Cloud.define('order', (request, response) => {
   order.user = request.currentUser;
   order.productDescription = request.params.link ? `「${request.params.link.options.name}」` : '🍵 请郭老师喝碗茶';
   order.amount = request.params.amount || 100;
+  // 设置白名单内的测试用户金额
+  if (process.env.WHITELIST_USERNAME.indexOf(username) > -1) {
+    order.amount = 1;
+  }
   order.link = request.params.link || {};
   order.ip = request.meta.remoteAddress;
   if (!(order.ip && /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(order.ip))) {
