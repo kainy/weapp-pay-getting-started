@@ -28,7 +28,10 @@ AV.Cloud.define('order', (request, response) => {
   order.tradeId = uuid().replace(/-/g, '')
   order.status = 'INIT'
   order.user = request.currentUser
-  order.productDescription = request.params.link ? `「${request.params.link.options.name}」` : '🍵 请郭老师喝碗茶'
+  order.productDescription = request.params.link
+    ? `「${request.params.link.options.name}」`
+    : (request.params.paramspayDescription || '🍵 请郭老师喝碗茶')
+  order.referrer = request.params.referrer || ''
   order.amount = request.params.amount || 100
         // 设置白名单内的测试用户金额
   if (process.env.WHITELIST_USERNAME.indexOf(username) > -1) {
