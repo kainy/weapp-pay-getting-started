@@ -25,6 +25,7 @@ const refreshToken = () => {
       value: access_token,
       expiredAt: Date.now() + expires_in * 1000
     }
+    console.log(access_token)
     return access_token
   })
 }
