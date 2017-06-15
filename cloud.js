@@ -30,7 +30,7 @@ AV.Cloud.define('order', (request, response) => {
   order.user = request.currentUser
   order.productDescription = request.params.link
     ? `「${request.params.link.options.name}」`
-    : (request.params.paramspayDescription || '🍵 请郭老师喝碗茶')
+    : (request.params.paramspayDescription || '\u2764 请郭老师喝碗茶')
   order.referrer = request.params.referrer || ''
   order.amount = request.params.amount || 100
         // 设置白名单内的测试用户金额

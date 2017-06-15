@@ -43,7 +43,7 @@ class Order extends AV.Object {
       // 参数文档： https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=9_1
       wxpay.createUnifiedOrder({
         openid: this.user.get('authData').lc_weapp.openid,
-        body: this.productDescription + ' ✈️ 跨时空小程序', // 出现在微信钱包“交易记录”
+        body: this.productDescription + ' \u2728 跨时空小程序', // 出现在微信钱包“交易记录”
         out_trade_no: this.tradeId,
         total_fee: this.amount,
         spbill_create_ip: this.ip,
