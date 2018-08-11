@@ -58,11 +58,14 @@ class Order extends AV.Object {
             prepay_id
         }) => {
       this.prepayId = prepay_id // eslint-disable-line
+      if (this.link && this.link.noticeJumpUrl) {
+        this.link.noticeJumpUrl = this.link.noticeJumpUrl + prepay_id // eslint-disable-line
+      }
       return this.save()
     })
   }
 
-  sendNotice () {
+  sendNotice (title = '小程序打赏', remark = '感谢惠顾，祝使用愉快 ^-^', page = 'pages/my-pay/pay') {
     const d = new Date(this.get('paidAt'))
     const arr = d.toString().split(' ')
     const data = {
@@ -71,7 +74,7 @@ class Order extends AV.Object {
       form_id: this.prepayId,
       data: {
         'keyword1': {
-          'value': '小程序打赏',
+          'value': title,
           'color': '#1aad19'
         },
         'keyword2': {
@@ -87,11 +90,11 @@ class Order extends AV.Object {
           'value': this.productDescription
         },
         'keyword6': {
-          'value': '感谢惠顾，祝使用愉快 ^-^'
+          'value': remark
         }
       },
       emphasis_keyword: 'keyword1.DATA',
-      page: 'pages/my-pay/pay'
+      page
     }
     console.log('send notice: ', data)
     return getAccessToken().then(accessToken =>

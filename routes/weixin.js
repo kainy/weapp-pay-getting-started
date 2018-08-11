@@ -43,7 +43,7 @@ router.post('/pay-callback', wxpay.useWXCallback((msg, req, res, next) => {
       useMasterKey: true
     }).then(() => {
       // 需要延迟发送，否则可能会 form_id 无效
-      setTimeout(() => order.sendNotice(), 12000)
+      setTimeout(() => order.sendNotice(order.link.options && order.link.options.title, order.link.options && order.link.options.remark, order.link.noticeJumpUrl), 12000)
     })
   }).then(() => {
     res.success()
