@@ -70,7 +70,7 @@ class Order extends AV.Object {
     const arr = d.toString().split(' ')
     const data = {
       touser: this.user.get('authData').lc_weapp.openid,
-      template_id: '5SOa_RWr1rOjAEcmVVXuVy3qFRBqeXXLO0TH3bq7DEM',
+      template_id: process.env.WEIXIN_PAY_TMPL_ID || '5SOa_RWr1rOjAEcmVVXuVy3qFRBqeXXLO0TH3bq7DEM',
       form_id: this.prepayId,
       data: {
         'keyword1': {
