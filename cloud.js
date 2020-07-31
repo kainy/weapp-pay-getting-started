@@ -56,7 +56,7 @@ AV.Cloud.define('order', (request, response) => {
     const payload = {
       appId: process.env.WEIXIN_APPID,
       timeStamp: String(Math.floor(Date.now() / 1000)),
-      package: `prepay_id=${order.prepayId}`,
+      package: `prepay_id=${order.prepayId}－${order.tradeId}`,
       signType: 'MD5',
       nonceStr: String(Math.random())
     }
